@@ -31,19 +31,16 @@
         </div>
       </nav>
     </header>
-
-    <!-- ここから追加 -->
     <main>
       <div class="container">
-        <h1 class="display-4">kanban</h1>
-        <p class="lead">kanbanでタスク管理をしてみましょう。</p>
-        <hr class="my-4">
-        <p>このアプリケーションはDjangoで作られています。</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">ログイン</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">サインアップ</a>
+        <h1>サインアップ</h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">登録</button>
+        </form>
       </div>
     </main>
-    <!-- ここまで追加 -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
