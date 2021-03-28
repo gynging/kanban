@@ -1,12 +1,14 @@
-from django.contrib.auth import login # 追加
-from django.contrib.auth.forms import UserCreationForm # 追加
-from django.shortcuts import render, redirect # redirectをインポート
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required # 追加
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 
 
 def index(request):
     return render(request, "kanban/index.html")
 
 
+@login_required # 追加
 def home(request):
     return render(request, "kanban/home.html")
 
@@ -20,8 +22,7 @@ def signup(request):
             return redirect("kanban:home")
     else:
         form = UserCreationForm()
-
-    context = {
-        "form": form
-    }
+        context = {
+            "form": form
+        }
     return render(request, 'kanban/signup.html', context)
