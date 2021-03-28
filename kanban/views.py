@@ -1,14 +1,18 @@
 from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required # 追加
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User # 追加
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView # 追加
+
+from .forms import UserForm
 
 
 def index(request):
     return render(request, "kanban/index.html")
 
 
-@login_required # 追加
+@login_required
 def home(request):
     return render(request, "kanban/home.html")
 
@@ -26,3 +30,9 @@ def signup(request):
             "form": form
         }
     return render(request, 'kanban/signup.html', context)
+
+
+
+class UserDetailView(DetailView):
+    model = User
+    template_name = "kanban/users/detail.html"
