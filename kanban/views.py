@@ -1,12 +1,14 @@
+
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin # 追加
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, resolve_url
 from django.views.generic import DetailView, UpdateView
 
 from .forms import UserForm
-from .mixins import OnlyYouMixin # 忘れずにインポートする
+from .mixins import OnlyYouMixin
 
 
 def index(request):
@@ -33,12 +35,11 @@ def signup(request):
     return render(request, 'kanban/signup.html', context)
 
 
-class UserDetailView(DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView): # この行を編集
     model = User
     template_name = "kanban/users/detail.html"
 
-
-class UserUpdateView(OnlyYouMixin, UpdateView): # この行を編集
+class UserUpdateView(OnlyYouMixin, UpdateView):
     model = User
     template_name = "kanban/users/update.html"
     form_class = UserForm
