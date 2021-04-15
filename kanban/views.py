@@ -1,7 +1,7 @@
 ...
 from django.shortcuts import render, redirect, resolve_url
 from django.urls import reverse_lazy # 追加
-from django.views.generic import DetailView, UpdateView, CreateView # 追加
+from django.views.generic import DetailView, UpdateView, CreateView,ListView # 追加
 
 from .forms import UserForm, ListForm # 追加
 from . models import List # 追加
