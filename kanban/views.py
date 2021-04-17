@@ -62,3 +62,12 @@ class ListListView(LoginRequiredMixin, ListView):
 class ListDetailView(LoginRequiredMixin, DetailView):
     model = List
     template_name = "kanban/lists/detail.html"
+
+class ListUpdateView(LoginRequiredMixin, UpdateView):
+    model = List
+    template_name = "kanban/lists/update.html"
+    form_class = ListForm
+
+    def get_success_url(self):
+        return resolve_url('kanban:lists_detail', pk=self.kwargs['pk'])
+
