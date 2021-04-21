@@ -8,8 +8,8 @@ from django.views.generic import DetailView, UpdateView
 from django.urls import reverse_lazy # 追加
 from django.views.generic import DetailView, UpdateView, CreateView,ListView,DeleteView # 追加
 from .forms import UserForm, ListForm # 追加
-from .models import List # 追加
-from .forms import UserForm
+from .models import List,Card # 追加
+from .forms import UserForm,CardForm
 from .mixins import OnlyYouMixin
 
 def index(request):
@@ -75,3 +75,13 @@ class ListDeleteView(LoginRequiredMixin, DeleteView):
     model = List
     template_name = "kanban/lists/delete.html"
     success_url = reverse_lazy("kanban:lists_list")
+
+class CardCreateView(LoginRequiredMixin, CreateView):
+    model = Card
+    template_name = "kanban/cards/create.html"
+    form_class = CardForm
+    success_url = reverse_lazy("kanban:home")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
