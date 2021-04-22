@@ -108,3 +108,8 @@ class CardDeleteView(LoginRequiredMixin, DeleteView):
     model = Card
     template_name = "kanban/cards/delete.html"
     success_url = reverse_lazy("kanban:cards_list")
+
+class HomeView(LoginRequiredMixin, ListView):
+    model = List
+    template_name = "kanban/home.html"
+
