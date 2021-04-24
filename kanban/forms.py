@@ -26,6 +26,11 @@ class CardForm(forms.ModelForm):
 
 class CardCreateFromHomeForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super(CardCreateFromHomeForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
     class Meta:
         model = Card
         fields = ("title", "description",)
