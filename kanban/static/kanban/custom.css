@@ -4,9 +4,49 @@ body {
 
 .home {
   display: table-cell !important;
+  background-color: #4D0000;
+}
+
 }
 
 .list {
   width: 240px;
   height: 100%;
+}
+
+.container{
+    background-color: #00CCFF;
+    margin-top: 50px;
+}
+
+.main{
+    padding-top: 50px;
+
+}
+
+.display-4 {
+    font-size: 5.0rem;
+    margin-left: 450px;
+}
+
+.lead{
+    text-align: center;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    margin-left: 245px;
+    margin: auto;
+    margin-top: 5px;
+    display: block;
+}
+
+.p-tag-ind {
+    text-align: center;
+}
+
+.display-4 {
+    font-family: fantasy;
+}
+.home {
+    background-color: turquoise;
 }
