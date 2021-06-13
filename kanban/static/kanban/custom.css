@@ -46,7 +46,12 @@ body {
 
 .display-4 {
     font-family: fantasy;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+
 }
 .home {
     background-color: turquoise;
 }
+
